@@ -27,50 +27,92 @@ index_to_key_map = [
     "specials",
 ]
 
-townInformation = []
-town = {
-    "name": "",
-    "troops": []
-}
-troops = []
 
-p = inflect.engine()
-for i, row in enumerate(table_rows):
-    cells = row.find_all('td')
-    troop = {}
-    for j, cell in enumerate(cells):
-        key = index_to_key_map[j]
-        # key = "apple"
-        troop[key] = ' '.join(cell.text.strip().split())
+def town_information():
+    townInformation = []
+    town = {
+        "name": "",
+        "troops": []
+    }
+    troops = []
 
-        # pluralize the troop names to match in game
-        if key == "name":
-            troop[key] = p.plural(troop[key])
+    p = inflect.engine()
+    for i, row in enumerate(table_rows):
+        cells = row.find_all('td')
+        troop = {}
+        for j, cell in enumerate(cells):
+            key = index_to_key_map[j]
+            # key = "apple"
+            troop[key] = ' '.join(cell.text.strip().split())
 
-        # get the town name from the span title attribute
-        if key == "townName":
-            troop[key] = cell.span['title'].strip()
+            # pluralize the troop names to match in game
+            if key == "name":
+                troop[key] = p.plural(troop[key])
 
-    # create new town if the town name does not match
-    if troop["townName"] != town["name"]:
-        town["troops"].extend(troops)
-        troops = []
-        if i != 0:
-            townInformation.append(town)
-        town = {
-            "name": troop["townName"],
-            "troops": []
-        }
+            # get the town name from the span title attribute
+            if key == "townName":
+                troop[key] = cell.span['title'].strip()
 
-    # delete unnecessary keys
-    del troop["random_shit"]
-    del troop["townName"]
+        # create new town if the town name does not match
+        if troop["townName"] != town["name"]:
+            town["troops"].extend(troops)
+            troops = []
+            if i != 0:
+                townInformation.append(town)
+            town = {
+                "name": troop["townName"],
+                "troops": []
+            }
 
-    troops.append(troop)
+        # delete unnecessary keys
+        del troop["random_shit"]
+        del troop["townName"]
 
-# sort by town name
-townInformation = sorted(townInformation, key=lambda k: k['name'])
-# write to js file the new variable
-with open('js/townInformation.js', 'w') as fp:
-    fp.write("let townInformation = ")
-    json.dump(townInformation, fp, indent=2)
+        troops.append(troop)
+
+    # sort by town name
+    townInformation = sorted(townInformation, key=lambda k: k['name'])
+    # write to js file the new variable
+    with open('js/townInformation.js', 'w') as fp:
+        fp.write("let townInformation = ")
+        json.dump(townInformation, fp, indent=2)
+
+
+def troop_information():
+    troops = []
+    p = inflect.engine()
+    for i, row in enumerate(table_rows):
+        cells = row.find_all('td')
+        troop = {}
+        for j, cell in enumerate(cells):
+            key = index_to_key_map[j]
+            # key = "apple"
+            troop[key] = ' '.join(cell.text.strip().split())
+
+            # pluralize the troop names to match in game
+            if key == "name":
+                troop[key] = p.plural(troop[key])
+
+            # get the town name from the span title attribute
+            if key == "townName":
+                troop[key] = cell.span['title'].strip()
+
+        # delete unnecessary keys
+        del troop["random_shit"]
+
+        # add image key
+        troop["imageSrc"] = "/img/" + troop["townName"] + "/" + troop["name"] + ".PNG"
+
+        troops.append(troop)
+
+    # sort by town name
+    troops = sorted(troops, key=lambda k: k['townName'])
+    # write to js file the new variable
+    with open('js/troopInformation.js', 'w') as fp:
+        fp.write("let troopInformation = ")
+        json.dump(troops, fp, indent=2)
+
+
+if __name__ == '__main__':
+    # town_information()
+    troop_information()
