@@ -1,0 +1,22 @@
+Name  					Lvl 	Att 	Def 	D- 	D+ 	HP 	Spd 	Grw 	Val 	Cost 		 Special 
+Peasant Peasant			 	1 	1 	1 	1 	1 	1 	3 	25 	15 	10 Gold 	  	
+Halfling Halfling 		 	1 	4 	2 	1 	3 	4 	5 	15 	75 	40 Gold 	  	Ranged (24 shots), Positive Luck
+Boar Boar 			 	2 	6 	5 	2 	3 	15 	6 	8 	145 	150 Gold 	  	
+Rogue Rogue 			 	2 	8 	3 	2 	4 	10 	6 	8 	135 	100 Gold 	  	Spying
+Leprechaun Leprechaun 		 	2 	8 	5 	3 	5 	15 	5 	9 	208 	100 Gold 	  	Doubles friendly unit Luck chance, Casts Fortune
+Mummy Mummy 			 	3 	7 	7 	3 	5 	30 	5 	7 	270 	300 Gold 	  	Undead, Curse
+Nomad Nomad 			 	3 	9 	8 	2 	6 	30 	7 	7 	345 	200 Gold 	  	Sandwalker
+Sharpshooter Sharpshooter 	 	4 	12 	10 	8 	10 	15 	9 	4 	585 	400 Gold 	  	Ranged (32 shots), No range and obstacle penalty
+Satyr Satyr 			 	4 	10 	11 	6 	10 	35 	7 	4 	518 	300 Gold 	  	Casts Mirth
+Steel Golem Steel Golem 	 	4 	10 	11 	6 	8 	45 	6 	4 	597 	400 Gold 	  	Unliving, Spell Damage Resistance +80%
+Troll Troll 				5 	14 	7 	10 	15 	40 	7 	3 	1024 	500 Gold 	  	Regeneration
+Gold Golem Gold Golem 			5 	11 	12 	8 	10 	50 	5 	3 	600 	500 Gold 	  	Unliving, Spell Damage Resistance +85%
+Fangarm Fangarm 		 	5 	12 	12 	8 	12 	50 	6 	3 	929 	600 Gold 	  	Flying, Mind spell immunity, Unlimited retaliations, Casts Hypnotize on attacked stack
+Diamond Golem Diamond Golem 	 	6 	13 	12 	10 	14 	60 	5 	2 	775 	750 Gold 	  	Unliving, Spell Damage Resistance +95%
+Enchanter Enchanter 		 	6 	17 	12 	14 	14 	30 	9 	2 	1210 	750 Gold 	  	Ranged (32 shots), No melee and obstacle penalty, Spellcaster
+Faerie Dragon Faerie Dragon 	 	7 	20 	20 	20 	30 	500 	15 	1 	30501 	10000 Gold 	, 8 Gem  	Dragon, Flying, Spellcaster, Magic Mirror
+Rust Dragon Rust Dragon 	 	7 	30 	30 	50 	50 	750 	17 	1 	26433 	15000 Gold 	,14 Sulfur  	Dragon, Flying, Breath, Acid breath
+Crystal Dragon Crystal Dragon 	 	7 	40 	40 	60 	75 	800 	16 	1 	39338 	20000 Gold 	,10 Crystal  	Dragon, Crystal generation, Magic resistance +20%
+Azure Dragon Azure Dragon 		7 	50 	50 	70 	80 	1000 	19 	1 	78845 	30000 Gold 	,20 Mercury  	Dragon, Flying, Breath, Fear, Resist lvl 1–3 spells, Resist Fear
+
+https://heroes.v.thelazy.net/index.php/List_of_creatures_(HotA)
