@@ -1,6 +1,6 @@
 import json
 from bs4 import BeautifulSoup
-
+import inflect
 
 file_name = "troopTable.html"
 file = open(file_name, "r", encoding="utf8")
@@ -34,6 +34,7 @@ town = {
 }
 troops = []
 
+p = inflect.engine()
 for i, row in enumerate(table_rows):
     cells = row.find_all('td')
     troop = {}
@@ -42,9 +43,15 @@ for i, row in enumerate(table_rows):
         # key = "apple"
         troop[key] = ' '.join(cell.text.strip().split())
 
+        # pluralize the troop names to match in game
+        if key == "name":
+            troop[key] = p.plural(troop[key])
+
+        # get the town name from the span title attribute
         if key == "townName":
             troop[key] = cell.span['title'].strip()
 
+    # create new town if the town name does not match
     if troop["townName"] != town["name"]:
         town["troops"].extend(troops)
         troops = []
@@ -55,11 +62,15 @@ for i, row in enumerate(table_rows):
             "troops": []
         }
 
+    # delete unnecessary keys
     del troop["random_shit"]
     del troop["townName"]
 
     troops.append(troop)
 
+# sort by town name
+townInformation = sorted(townInformation, key=lambda k: k['name'])
+# write to js file the new variable
 with open('js/townInformation.js', 'w') as fp:
     fp.write("let townInformation = ")
     json.dump(townInformation, fp, indent=2)
