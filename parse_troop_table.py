@@ -50,8 +50,12 @@ def town_information():
                 troop[key] = p.plural(troop[key])
 
             # get the town name from the span title attribute
-            if key == "townName":
+            elif key == "townName":
                 troop[key] = cell.span['title'].strip()
+
+            # cast int values to ints
+            elif key not in ["random_shit", "specials", "level"]:
+                troop[key] = int(troop[key])
 
         # create new town if the town name does not match
         if troop["townName"] != town["name"]:
@@ -94,8 +98,12 @@ def troop_information():
                 troop[key] = p.plural(troop[key])
 
             # get the town name from the span title attribute
-            if key == "townName":
+            elif key == "townName":
                 troop[key] = cell.span['title'].strip()
+
+            # cast int values to ints
+            elif key not in ["random_shit", "specials", "level"]:
+                troop[key] = int(troop[key])
 
         # delete unnecessary keys
         del troop["random_shit"]
@@ -103,6 +111,29 @@ def troop_information():
         # add image key
         troop["imageSrc"] = "./img/" + troop["townName"] + "/" + troop["name"] + ".PNG"
 
+        # combine damage keys
+        troop["damage"] = str(troop["damage_low"]) + "-" + str(troop["damage_high"])
+
+        # type (archer/fast/tank/weak)
+        # first get archer damage
+        archer = "Ranged" in troop["specials"]
+        if archer:
+            troop["archerDamage"] = int(troop["specials"][8:10])
+        else:
+            troop["archerDamage"] = 0
+
+        troop["type"] = ""
+        if troop["archerDamage"] > 0:
+            troop["type"] += "Archer (" + str(troop["archerDamage"]) + "dmg) "
+        if troop["speed"] > 6:
+            troop["type"] += "Fast "
+        if troop["health"] > 50:
+            troop["type"] += "Tank"
+        if troop["type"] == "" and troop["health"] < 10:
+            troop["type"] = "Weak"
+        troop["type"] = troop["type"].strip()
+
+        # done
         troops.append(troop)
 
     # sort by town name

@@ -1,25 +1,77 @@
 $(document).ready(
   function() {
     //buildTable()
-    $('#example').DataTable( {
+    var table = $('#example').DataTable( {
         data: troopInformation,
         columns: [
-            { title: "Town", data: "townName", name: "townName", target: 0},
-            { title: "Image", data: "imageSrc", name: "imageSrc", target: 1, render: function ( data, type, row, meta) {return '<img src="' + data +'"/>';}},
-            { title: "Name", data: "name", name: "name", target: 2},
-            { title: "Level", data: "level", name: "level", target: 3},
-            { title: "Damage Low", data: "damage_low", name: "damage_low", target: 4},
-            { title: "Damage High", data: "damage_high", name: "damage_high", target: 5},
-            { title: "Health", data: "health", name: "health", target: 6},
-            { title: "Speed", data: "speed", name: "speed", target: 7},
-            { title: "Troops Per Week", data: "growth", name: "growth", target: 8},
-            { title: "AI Value", data: "aiValue", name: "aiValue", target: 9},
-            { title: "Cost", data: "cost", name: "cost", target: 10},
-            { title: "Specials", data: "specials", name: "specials", target: 11},
-        ]
+            { className: "details-control", orderable: false, data: null, defaultContent: "", target: 0 },
+            { title: "Town", data: "townName", name: "townName", target: 1},
+            { title: "Image", data: "imageSrc", name: "imageSrc", target: 2, render: function ( data, type, row, meta) {return '<img src="' + data +'"/>';}},
+            { title: "Name", data: "name", name: "name", target: 3},
+            { title: "Level", data: "level", name: "level", target: 4},
+            { title: "Type", data: "type", name: "type", target: 5},
+            { title: "Damage", data: "damage", name: "damage", target: 6},
+            { title: "Health", data: "health", name: "health", target: 7},
+            { title: "Speed", data: "speed", name: "speed", target: 8},
+            { title: "Specials", data: "specials", name: "specials", target: 9},
+        ],
+        columnDefs: [
+            {className: "dt-center", targets: "_all"}
+        ],
     } );
+
+    // Add event listener for opening and closing details
+    $('#example tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );
+
+    extras = [
+            { title: "Troops Per Week", data: "growth", name: "growth", target: 0},
+            { title: "AI Value", data: "aiValue", name: "aiValue", target: 1},
+            { title: "Cost", data: "cost", name: "cost", target: 2},
+            { title: "Attack", data: "attack", name: "attack", target: 3},
+            { title: "Defense", data: "defense", name: "defense", target: 4},
+
+    ]
   }
 );
+function format ( d ) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+            '<td>Troops Per Week</td>'+
+            '<td>'+d.growth+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Cost</td>'+
+            '<td>'+d.cost+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>AI Value</td>'+
+            '<td>'+d.aiValue+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Attack</td>'+
+            '<td>'+d.attack+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Defense</td>'+
+            '<td>'+d.defense+'</td>'+
+        '</tr>'+
+    '</table>';
+}
 
   function buildTable() {
     for (town of townInformation) {
