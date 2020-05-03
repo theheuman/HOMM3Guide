@@ -2,7 +2,9 @@ $(document).ready(
   function() {
     //buildTable()
     var table = $('#example').DataTable( {
+        fixedHeader: true,
         data: troopInformation,
+        order: [[ 1, "asc" ]],
         columns: [
             { className: "details-control", orderable: false, data: null, defaultContent: "", target: 0 },
             { title: "Town", data: "townName", name: "townName", target: 1},
@@ -16,7 +18,8 @@ $(document).ready(
             { title: "Specials", data: "specials", name: "specials", target: 9},
         ],
         columnDefs: [
-            {className: "dt-center", targets: "_all"}
+            {className: "dt-center", targets: "_all"},
+            { "targets": [0], "searchable": false, "orderable": false, "visible": true }
         ],
     } );
 
