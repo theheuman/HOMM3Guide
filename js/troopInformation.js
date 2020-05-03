@@ -1292,7 +1292,7 @@ let troopInformation = [
     "type": "Fast Tank"
   },
   {
-    "name": "Wyvern Monarch",
+    "name": "Wyvern Monarchs",
     "townName": "Fortress",
     "level": "6+",
     "attack": 14,
@@ -1305,7 +1305,7 @@ let troopInformation = [
     "aiValue": 1518,
     "cost": 1100,
     "specials": "Flying, Poison",
-    "imageSrc": "./img/Fortress/Wyvern Monarch.PNG",
+    "imageSrc": "./img/Fortress/Wyvern Monarchs.PNG",
     "damage": "18-22",
     "archerDamage": 0,
     "type": "Fast Tank"

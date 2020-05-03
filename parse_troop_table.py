@@ -48,18 +48,14 @@ def configure_inflect():
     # define specials
     p.defnoun("Nix", "Nix")
     p.defnoun("Harpy", "Harpies")
-    p.defnoun("Dragon Fly", "Dragon Flies")
-    p.defnoun("Serpent Fly", "Serpent Flies")
-    p.defnoun("Wyvern Monarch", "Wyvern Monarchs")
+    p.defnoun("Fly", "Flies")
+    p.defnoun("Monarch", "Monarchs")
     p.defnoun("Cerberus", "Cerberi")
     p.defnoun("Efreet", "Efreet")
-    p.defnoun("Walking Dead", "Walking Dead")
+    p.defnoun("Dead", "Dead")
     p.defnoun("Mage", "Magi")
-    p.defnoun("Arch Mage", "Arch Magi")
-    p.defnoun("Ogre Mage", "Ogre Magi")
     p.defnoun("Cyclops", "Cyclopes")
     p.defnoun("Pegasus", "Pegasi")
-    p.defnoun("Silver Pegasus", "Silver Pegasi")
     p.defnoun("Genie", "Genies")
     p.defnoun("Mummy", "Mummies")
     return p
@@ -70,6 +66,15 @@ def write_to_output(file_name, variable_name, array_of_dicts):
     with open('js/' + file_name, 'w') as fp:
         fp.write("let " + variable_name + " = ")
         json.dump(array_of_dicts, fp, indent=2)
+
+
+def pluralize(text: str, pluralizer):
+    print(text)
+    name_split = text.split(' ')
+    name_split[-1] = pluralizer.plural(name_split[-1])
+    text = ' '.join(name_split)
+    print(text + "\n")
+    return text
 
 
 def town_information(table_rows, index_to_key_map, inflect_engine):
@@ -134,7 +139,8 @@ def troop_information(table_rows, index_to_key_map, inflect_engine):
 
             # pluralize the troop names to match in game
             if key == "name":
-                troop[key] = inflect_engine.plural(troop[key])
+                troop[key] = pluralize(troop[key], inflect_engine)
+                # troop[key] = inflect_engine.plural(troop[key])
 
             # get the town name from the span title attribute
             elif key == "townName":
