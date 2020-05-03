@@ -101,7 +101,7 @@ def troop_information():
         del troop["random_shit"]
 
         # add image key
-        troop["imageSrc"] = "/img/" + troop["townName"] + "/" + troop["name"] + ".PNG"
+        troop["imageSrc"] = "./img/" + troop["townName"] + "/" + troop["name"] + ".PNG"
 
         troops.append(troop)
 
