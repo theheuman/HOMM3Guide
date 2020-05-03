@@ -2,41 +2,84 @@ import json
 from bs4 import BeautifulSoup
 import inflect
 
-file_name = "troopTable.html"
-file = open(file_name, "r", encoding="utf8")
-html = file.read()
-soup = BeautifulSoup(html, 'html.parser')
 
-table_body = soup.tbody
-table_rows = table_body.find_all('tr')
+def configure_beautiful_soup(file_name):
+    # open up the file, and get all the table rows
+    file = open(file_name, "r", encoding="utf8")
+    html = file.read()
+    soup = BeautifulSoup(html, 'html.parser')
+    table_body = soup.tbody
+    table_rows = table_body.find_all('tr')
+    index_to_key_map = [
+        "name",
+        "townName",
+        "level",
+        "attack",
+        "defense",
+        "damage_low",
+        "damage_high",
+        "health",
+        "speed",
+        "growth",
+        "aiValue",
+        "cost",
+        "random_shit",
+        "specials",
+    ]
+    return table_rows, index_to_key_map
 
-index_to_key_map = [
-    "name",
-    "townName",
-    "level",
-    "attack",
-    "defense",
-    "damage_low",
-    "damage_high",
-    "health",
-    "speed",
-    "growth",
-    "aiValue",
-    "cost",
-    "random_shit",
-    "specials",
-]
+
+def configure_inflect():
+    p = inflect.engine()
+
+    # Nix
+    # Harpies
+    # Serpent Flies
+    # Dragon Flies
+    # Monarchs
+    # Cerberi
+    # Efreet
+    # Dead
+    # Magi
+    # Cyclopes
+    # Pegasi
+    # pegasi instead of pegasuses
+
+    # define specials
+    p.defnoun("Nix", "Nix")
+    p.defnoun("Harpy", "Harpies")
+    p.defnoun("Dragon Fly", "Dragon Flies")
+    p.defnoun("Serpent Fly", "Serpent Flies")
+    p.defnoun("Wyvern Monarch", "Wyvern Monarchs")
+    p.defnoun("Cerberus", "Cerberi")
+    p.defnoun("Efreet", "Efreet")
+    p.defnoun("Walking Dead", "Walking Dead")
+    p.defnoun("Mage", "Magi")
+    p.defnoun("Arch Mage", "Arch Magi")
+    p.defnoun("Ogre Mage", "Ogre Magi")
+    p.defnoun("Cyclops", "Cyclopes")
+    p.defnoun("Pegasus", "Pegasi")
+    p.defnoun("Silver Pegasus", "Silver Pegasi")
+    p.defnoun("Genie", "Genies")
+    p.defnoun("Mummy", "Mummies")
+    return p
 
 
-def town_information():
-    townInformation = []
+def write_to_output(file_name, variable_name, array_of_dicts):
+    # write to js file the new variable
+    with open('js/' + file_name, 'w') as fp:
+        fp.write("let " + variable_name + " = ")
+        json.dump(array_of_dicts, fp, indent=2)
+
+
+def town_information(table_rows, index_to_key_map, inflect_engine):
+    towns = []
     town = {
         "name": "",
         "troops": []
     }
     troops = []
 
-    p = inflect.engine()
     for i, row in enumerate(table_rows):
         cells = row.find_all('td')
         troop = {}
@@ -47,7 +90,7 @@ def town_information():
 
             # pluralize the troop names to match in game
             if key == "name":
-                troop[key] = p.plural(troop[key])
+                troop[key] = inflect_engine.plural(troop[key])
 
             # get the town name from the span title attribute
             elif key == "townName":
@@ -62,7 +105,7 @@ def town_information():
             town["troops"].extend(troops)
             troops = []
             if i != 0:
-                townInformation.append(town)
+                towns.append(town)
             town = {
                 "name": troop["townName"],
                 "troops": []
@@ -75,16 +118,12 @@ def town_information():
         troops.append(troop)
 
     # sort by town name
-    townInformation = sorted(townInformation, key=lambda k: k['name'])
-    # write to js file the new variable
-    with open('js/townInformation.js', 'w') as fp:
-        fp.write("let townInformation = ")
-        json.dump(townInformation, fp, indent=2)
+    towns = sorted(towns, key=lambda k: k['name'])
+    return towns
 
 
-def troop_information():
+def troop_information(table_rows, index_to_key_map, inflect_engine):
     troops = []
-    p = inflect.engine()
     for i, row in enumerate(table_rows):
         cells = row.find_all('td')
         troop = {}
@@ -95,7 +134,7 @@ def troop_information():
 
             # pluralize the troop names to match in game
             if key == "name":
-                troop[key] = p.plural(troop[key])
+                troop[key] = inflect_engine.plural(troop[key])
 
             # get the town name from the span title attribute
             elif key == "townName":
@@ -138,12 +177,18 @@ def troop_information():
 
     # sort by town name
     troops = sorted(troops, key=lambda k: k['townName'])
-    # write to js file the new variable
-    with open('js/troopInformation.js', 'w') as fp:
-        fp.write("let troopInformation = ")
-        json.dump(troops, fp, indent=2)
+    return troops
 
 
 if __name__ == '__main__':
-    # town_information()
-    troop_information()
+    input_file_name = "troopTable.html"
+    rows, key_map = configure_beautiful_soup(input_file_name)
+    engine = configure_inflect()
+
+    # town information
+    # information_objects = town_information()
+    # write_to_output("townInformation.js", "townInformation", information_objects)
+
+    # troop information
+    information_objects = troop_information(rows, key_map, engine)
+    write_to_output("troopInformation.js", "troopInformation", information_objects)

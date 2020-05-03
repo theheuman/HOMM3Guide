@@ -741,7 +741,7 @@ let troopInformation = [
     "type": "Archer (12dmg) Fast"
   },
   {
-    "name": "Nixes",
+    "name": "Nix",
     "townName": "Cove",
     "level": "6",
     "attack": 13,
@@ -754,7 +754,7 @@ let troopInformation = [
     "aiValue": 1415,
     "cost": 1000,
     "specials": "Ignores 30% of enemy attack value",
-    "imageSrc": "./img/Cove/Nixes.PNG",
+    "imageSrc": "./img/Cove/Nix.PNG",
     "damage": "18-22",
     "archerDamage": 0,
     "type": "Tank"
@@ -855,7 +855,7 @@ let troopInformation = [
     "type": "Weak"
   },
   {
-    "name": "Harpys",
+    "name": "Harpies",
     "townName": "Dungeon",
     "level": "2",
     "attack": 6,
@@ -868,7 +868,7 @@ let troopInformation = [
     "aiValue": 154,
     "cost": 130,
     "specials": "Flying, Strike and return",
-    "imageSrc": "./img/Dungeon/Harpys.PNG",
+    "imageSrc": "./img/Dungeon/Harpies.PNG",
     "damage": "1-4",
     "archerDamage": 0,
     "type": ""
@@ -1159,7 +1159,7 @@ let troopInformation = [
     "type": "Archer (24dmg)"
   },
   {
-    "name": "Serpent Flys",
+    "name": "Serpent Flies",
     "townName": "Fortress",
     "level": "3",
     "attack": 7,
@@ -1172,13 +1172,13 @@ let troopInformation = [
     "aiValue": 268,
     "cost": 220,
     "specials": "Flying, Dispel",
-    "imageSrc": "./img/Fortress/Serpent Flys.PNG",
+    "imageSrc": "./img/Fortress/Serpent Flies.PNG",
     "damage": "2-5",
     "archerDamage": 0,
     "type": "Fast"
   },
   {
-    "name": "Dragon Flys",
+    "name": "Dragon Flies",
     "townName": "Fortress",
     "level": "3+",
     "attack": 8,
@@ -1191,7 +1191,7 @@ let troopInformation = [
     "aiValue": 312,
     "cost": 240,
     "specials": "Flying, Dispel, Weakness",
-    "imageSrc": "./img/Fortress/Dragon Flys.PNG",
+    "imageSrc": "./img/Fortress/Dragon Flies.PNG",
     "damage": "2-5",
     "archerDamage": 0,
     "type": "Fast"
@@ -1292,7 +1292,7 @@ let troopInformation = [
     "type": "Fast Tank"
   },
   {
-    "name": "Wyvern Monarches",
+    "name": "Wyvern Monarch",
     "townName": "Fortress",
     "level": "6+",
     "attack": 14,
@@ -1305,7 +1305,7 @@ let troopInformation = [
     "aiValue": 1518,
     "cost": 1100,
     "specials": "Flying, Poison",
-    "imageSrc": "./img/Fortress/Wyvern Monarches.PNG",
+    "imageSrc": "./img/Fortress/Wyvern Monarch.PNG",
     "damage": "18-22",
     "archerDamage": 0,
     "type": "Fast Tank"
@@ -1444,7 +1444,7 @@ let troopInformation = [
     "type": "Fast"
   },
   {
-    "name": "Cerberuses",
+    "name": "Cerberi",
     "townName": "Inferno",
     "level": "3+",
     "attack": 10,
@@ -1457,7 +1457,7 @@ let troopInformation = [
     "aiValue": 392,
     "cost": 250,
     "specials": "No enemy retaliation, 3-headed attack",
-    "imageSrc": "./img/Inferno/Cerberuses.PNG",
+    "imageSrc": "./img/Inferno/Cerberi.PNG",
     "damage": "2-7",
     "archerDamage": 0,
     "type": "Fast"
@@ -1539,7 +1539,7 @@ let troopInformation = [
     "type": "Fast"
   },
   {
-    "name": "Efreets",
+    "name": "Efreet",
     "townName": "Inferno",
     "level": "6",
     "attack": 16,
@@ -1552,7 +1552,7 @@ let troopInformation = [
     "aiValue": 1670,
     "cost": 900,
     "specials": "Flying, Fire immunity",
-    "imageSrc": "./img/Inferno/Efreets.PNG",
+    "imageSrc": "./img/Inferno/Efreet.PNG",
     "damage": "16-24",
     "archerDamage": 0,
     "type": "Fast Tank"
@@ -1653,7 +1653,7 @@ let troopInformation = [
     "type": "Weak"
   },
   {
-    "name": "Walking Deads",
+    "name": "Walking Dead",
     "townName": "Necropolis",
     "level": "2",
     "attack": 5,
@@ -1666,7 +1666,7 @@ let troopInformation = [
     "aiValue": 98,
     "cost": 100,
     "specials": "Undead",
-    "imageSrc": "./img/Necropolis/Walking Deads.PNG",
+    "imageSrc": "./img/Necropolis/Walking Dead.PNG",
     "damage": "2-3",
     "archerDamage": 0,
     "type": ""
@@ -1976,7 +1976,7 @@ let troopInformation = [
     "type": ""
   },
   {
-    "name": "Mummys",
+    "name": "Mummies",
     "townName": "Neutral",
     "level": "3",
     "attack": 7,
@@ -1989,7 +1989,7 @@ let troopInformation = [
     "aiValue": 270,
     "cost": 300,
     "specials": "Undead, Curse",
-    "imageSrc": "./img/Neutral/Mummys.PNG",
+    "imageSrc": "./img/Neutral/Mummies.PNG",
     "damage": "3-5",
     "archerDamage": 0,
     "type": ""
@@ -2356,7 +2356,7 @@ let troopInformation = [
     "type": "Archer (24dmg) Fast"
   },
   {
-    "name": "Pegasuses",
+    "name": "Pegasi",
     "townName": "Rampart",
     "level": "4",
     "attack": 9,
@@ -2369,13 +2369,13 @@ let troopInformation = [
     "aiValue": 518,
     "cost": 250,
     "specials": "Flying, Magic damper",
-    "imageSrc": "./img/Rampart/Pegasuses.PNG",
+    "imageSrc": "./img/Rampart/Pegasi.PNG",
     "damage": "5-9",
     "archerDamage": 0,
     "type": "Fast"
   },
   {
-    "name": "Silver Pegasuses",
+    "name": "Silver Pegasi",
     "townName": "Rampart",
     "level": "4+",
     "attack": 9,
@@ -2388,7 +2388,7 @@ let troopInformation = [
     "aiValue": 532,
     "cost": 275,
     "specials": "Flying, Magic damper",
-    "imageSrc": "./img/Rampart/Silver Pegasuses.PNG",
+    "imageSrc": "./img/Rampart/Silver Pegasi.PNG",
     "damage": "5-9",
     "archerDamage": 0,
     "type": "Fast"
@@ -2641,7 +2641,7 @@ let troopInformation = [
     "type": ""
   },
   {
-    "name": "Ogre Mages",
+    "name": "Ogre Magi",
     "townName": "Stronghold",
     "level": "4+",
     "attack": 13,
@@ -2654,7 +2654,7 @@ let troopInformation = [
     "aiValue": 672,
     "cost": 400,
     "specials": "Cast Bloodlust x3",
-    "imageSrc": "./img/Stronghold/Ogre Mages.PNG",
+    "imageSrc": "./img/Stronghold/Ogre Magi.PNG",
     "damage": "6-12",
     "archerDamage": 0,
     "type": "Tank"
@@ -2698,7 +2698,7 @@ let troopInformation = [
     "type": "Fast Tank"
   },
   {
-    "name": "Cyclopss",
+    "name": "Cyclopes",
     "townName": "Stronghold",
     "level": "6",
     "attack": 15,
@@ -2711,7 +2711,7 @@ let troopInformation = [
     "aiValue": 1266,
     "cost": 750,
     "specials": "Ranged (16 shots), Can attack siege walls",
-    "imageSrc": "./img/Stronghold/Cyclopss.PNG",
+    "imageSrc": "./img/Stronghold/Cyclopes.PNG",
     "damage": "16-20",
     "archerDamage": 16,
     "type": "Archer (16dmg) Tank"
@@ -2888,7 +2888,7 @@ let troopInformation = [
     "type": ""
   },
   {
-    "name": "Mages",
+    "name": "Magi",
     "townName": "Tower",
     "level": "4",
     "attack": 11,
@@ -2901,13 +2901,13 @@ let troopInformation = [
     "aiValue": 570,
     "cost": 350,
     "specials": "Ranged (24 shots), No melee penalty, Spells cost -2 sp",
-    "imageSrc": "./img/Tower/Mages.PNG",
+    "imageSrc": "./img/Tower/Magi.PNG",
     "damage": "7-9",
     "archerDamage": 24,
     "type": "Archer (24dmg)"
   },
   {
-    "name": "Arch Mages",
+    "name": "Arch Magi",
     "townName": "Tower",
     "level": "4+",
     "attack": 12,
@@ -2920,7 +2920,7 @@ let troopInformation = [
     "aiValue": 680,
     "cost": 450,
     "specials": "Ranged (24 shots), No melee penalty, No obstacle penalty, Spells cost -2 sp",
-    "imageSrc": "./img/Tower/Arch Mages.PNG",
+    "imageSrc": "./img/Tower/Arch Magi.PNG",
     "damage": "7-9",
     "archerDamage": 24,
     "type": "Archer (24dmg) Fast"
