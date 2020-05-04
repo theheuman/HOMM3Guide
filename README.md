@@ -2,6 +2,16 @@
 
 Searchable and sortable table of creatures for Heroes of Might and Magic Horn of the Abyss
 
+To view the site simply download the project and then open index.html in your preferred browser.
+
+You can download either by downloading the zip file, or by cloning the project with your favorite git client
+
+```html
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<a href="https://github.com/theheuman/HOMM3Guide/archive/master.zip" class="btn btn-primary">Download Zip</a>
+```
+
 ## Datatables
 Utilizes datatables 
 
