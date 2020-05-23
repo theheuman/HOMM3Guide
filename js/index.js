@@ -39,15 +39,6 @@ $(document).ready(
             tr.addClass('shown');
         }
     } );
-
-    extras = [
-            { title: "Troops Per Week", data: "growth", name: "growth", target: 0},
-            { title: "AI Value", data: "aiValue", name: "aiValue", target: 1},
-            { title: "Cost", data: "cost", name: "cost", target: 2},
-            { title: "Attack", data: "attack", name: "attack", target: 3},
-            { title: "Defense", data: "defense", name: "defense", target: 4},
-
-    ]
   }
 );
 function format ( d ) {
@@ -75,57 +66,3 @@ function format ( d ) {
         '</tr>'+
     '</table>';
 }
-
-  function buildTable() {
-    for (town of townInformation) {
-        let table = document.getElementById("tableBody")
-        buildSection(table, town);
-    }
-  }
-
-  function buildSection(table, town) {
-    for (i = 0; i < town.troops.length; i++) {
-        let row = buildRow(town.name,  i+1, town.troops[i])
-	table.append(row)
-    } 
-  }
-
-  function buildRow(name, index, troop) {
-    let prepend = "/lv"
-    let imageSrc = "./img/" + name + "/" + troop.name + ".PNG"
-
-    let row = document.createElement("tr")
-    let cell = document.createElement("td")
-    cell.innerHTML = name;
-    row.append(cell)
-    
-    cell = document.createElement("td")
-    cell.innerHTML = troop.name;
-    row.append(cell)
-
-    cell = document.createElement("td")
-    cell.innerHTML = "Level " + troop.level;
-    row.append(cell)
-
-    cell = document.createElement("td")
-    cell.innerHTML = '<img src="' + imageSrc + '">';
-    row.append(cell)
-
-    cell = document.createElement("td")
-    cell.innerHTML = troop.type;
-    row.append(cell)
-
-    cell = document.createElement("td")
-    cell.innerHTML = troop.damage_low + "-" + troop.damage_high;
-    row.append(cell)
-
-    cell = document.createElement("td")
-    cell.innerHTML = troop.health;
-    row.append(cell)
-
-    cell = document.createElement("td")
-    cell.innerHTML = troop.speed;
-    row.append(cell)
-    
-    return row
-  }
