@@ -29,7 +29,7 @@
 </head>
 <body>
 
-<div class="content" style="width:80%; padding-left:10%;">
+<div class="content" style="width:80%; padding-left:1%;">
     <h1>Heroes of Might and Magic: Horn Of The Abyss Creatures</h1>
     <table id="example" class="display" style="width:100%"></table>
 <script>
@@ -39,87 +39,132 @@
         data: troopInformation,
         columns: [
         
-            {
-                title : "Town",
+            { 
+                className: "dt-center filter_select townName",
+            
+                title: "Town",
+            
                 data: "townName",
+            
                 name: "townName",
+            
+            
                 target: 0,
-                className: "filter_select townName",
-                
+            
             },
         
-            {
-                title : "Image",
-                data: "imageSrc",
-                name: "imageSrc",
-                target: 1,
-                className: "filter_select imageSrc",
-                
+            { 
                 render: function ( data, type, row, meta) {return '<img src="' + data +'"/>';},
-                
+            
+                className: "dt-center filter_select imageSrc",
+            
+                title: "Image",
+            
+                data: "imageSrc",
+            
+                name: "imageSrc",
+            
+            
+                target: 1,
+            
             },
         
-            {
-                title : "Name",
+            { 
+                className: "dt-center filter_text name",
+            
+                title: "Name",
+            
                 data: "name",
+            
                 name: "name",
+            
+            
                 target: 2,
-                className: "filter_text name",
-                
+            
             },
         
-            {
-                title : "Level",
+            { 
+                className: "dt-center filter_select level",
+            
+                title: "Level",
+            
                 data: "level",
+            
                 name: "level",
+            
+            
                 target: 3,
-                className: "filter_select level",
-                
+            
             },
         
-            {
-                title : "Type",
+            { 
+                className: "dt-center filter_select type",
+            
+                title: "Type",
+            
                 data: "type",
+            
                 name: "type",
+            
+            
                 target: 4,
-                className: "filter_select type",
-                
+            
             },
         
-            {
-                title : "Damage",
+            { 
+                className: "dt-center filter_text damage",
+            
+                title: "Damage",
+            
                 data: "damage",
+            
                 name: "damage",
+            
+            
                 target: 5,
-                className: "filter_text damage",
-                
+            
             },
         
-            {
-                title : "Health",
+            { 
+                className: "dt-center filter_text health",
+            
+                title: "Health",
+            
                 data: "health",
+            
                 name: "health",
+            
+            
                 target: 6,
-                className: "filter_text health",
-                
+            
             },
         
-            {
-                title : "Speed",
+            { 
+                className: "dt-center filter_text speed",
+            
+                title: "Speed",
+            
                 data: "speed",
+            
                 name: "speed",
+            
+            
                 target: 7,
-                className: "filter_text speed",
-                
+            
             },
         
-            {
-                title : "Specials",
+            { 
+                className: "dt-center filter_text specials",
+            
+                title: "Specials",
+            
                 data: "specials",
+            
                 name: "specials",
+            
+            
                 target: 8,
-                className: "filter_text specials",
-                
+            
             },
         
         ],
@@ -127,6 +172,8 @@
         fixedHeader: true,
         
         order: [[ 1, "asc" ]],
+        
+        columnDefs: [{ "targets": [0], "searchable": false, "orderable": false, "visible": true }],
         
         records_per_page: 25,
         
@@ -138,15 +185,14 @@
     //Functions for building the filters, mostly written by Joseph Turner (joseph.turner@aciwebs.com) with help of datatable examples
 
 function buildFilters( table ) {
-    console.log("1")
     // clone header to create position for filters
     $('#example thead tr').clone(true)
             .appendTo( '#example thead' );
 
     urlParameters = getUrlParameters();
-    console.log(urlParameters)
 
     //build the filters
+
     buildSelectFilters( table, urlParameters );
     buildTextFilters(table);
     buildDateFilters(table);
@@ -168,10 +214,8 @@ function buildSelectFilters( table, searchParameters ) {
         var title = $(this).text();
 
         //var column = table.column( this, {search: 'applied'} );
-        var colClass = $(this).attr("class").replace(" ", ".");
-        console.log(colClass)
+        var colClass = $(this).attr("class").replace(/ /g, ".");
         var column = table.column("." + colClass);
-        console.log(column)
 
         value = "- Select -";
         var select = $('<select style="width: 100%;"><option value="' + value + '">' + value + '</option></select>');

@@ -29,23 +29,27 @@ if __name__ == '__main__' and __package__ is None:
     # include this column later
     # className: "details-control", orderable: false, data: null, defaultContent: "", target: 0
     columns = [
-        DatatableColumn("townName", "Town", "select"),
+        DatatableColumn("townName", "Town", "select", {"className": "dt-center"}),
         DatatableColumn("imageSrc", "Image", "select",
-                        {"render": "function ( data, type, row, meta) {return '<img src=\"' + data +'\"/>';}"}),
-        DatatableColumn("name", "Name", "text"),
-        DatatableColumn("level", "Level", "select"),
-        DatatableColumn("type", "Type", "select"),
-        DatatableColumn("damage", "Damage", "text"),
-        DatatableColumn("health", "Health", "text"),
-        DatatableColumn("speed", "Speed", "text"),
-        DatatableColumn("specials", "Specials", "text"),
+                        {
+                            "render": "function ( data, type, row, meta) {return '<img src=\"' + data +'\"/>';}",
+                            "className": "dt-center"
+                         }
+                        ),
+        DatatableColumn("name", "Name", "text", {"className": "dt-center"}),
+        DatatableColumn("level", "Level", "select", {"className": "dt-center"}),
+        DatatableColumn("type", "Type", "select", {"className": "dt-center"}),
+        DatatableColumn("damage", "Damage", "text", {"className": "dt-center"}),
+        DatatableColumn("health", "Health", "text", {"className": "dt-center"}),
+        DatatableColumn("speed", "Speed", "text", {"className": "dt-center"}),
+        DatatableColumn("specials", "Specials", "text", {"className": "dt-center"}),
     ]
     js_array = "troopInformation"
     html_arguments = {"id": "example", "class": "display", "style": "width:100%"}
     datatable_arguments = {
         "fixedHeader": "true",
         "order": '[[ 1, "asc" ]]',
-        # "columnDefs": '[{className: "dt-center ", targets: "_all"},{ "targets": [0], "searchable": false, "orderable": false, "visible": true }]'
+        "columnDefs": '[{ "targets": [0], "searchable": false, "orderable": false, "visible": true }]'
     }
     table_view = JSArrayDatatable(
         columns,
